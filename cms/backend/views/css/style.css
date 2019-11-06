@@ -283,17 +283,17 @@ ARTICULOS
 
 /* Agregar Artículos */
 
-#agregarArtículo{
+#agregarArticulo{
 	margin:20px auto;
 	border:2px solid #ccc;
 	padding:20px;
 }
 
-#agregarArtículo input{
+#agregarArticulo input{
 	margin-bottom:20px;
 }
 
-#agregarArtículo p{
+#agregarArticulo p{
 	position:relative;
 	text-align:center;
 	width:100%;
