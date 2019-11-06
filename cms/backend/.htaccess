@@ -1,0 +1,7 @@
+# impedir que se pueda ver el listado de contenidos de un directorio
+Options All -Indexes
+
+# URLs amigables
+# http://localhost:8012/cms/cms_mvc/backend/index.php?action=inicio => http://localhost:8012/cms/cms_mvc/backend/inicio
+RewriteEngine on
+RewriteRule ^(\w+)$ index.php?action=$1
