@@ -19,7 +19,7 @@ alias cms-copy=_cms-copy_func
 _cms-copy_func() {
     if [ -d "$PWD/cms" ]; then
         echo "start copy"
-        docker cp $PWD/cms cms-webserver:/var/www/html/cms
+        docker cp $PWD/cms cms-webserver:/var/www/html/
         echo "end copy"
     else
         echo "not here buddy!"
