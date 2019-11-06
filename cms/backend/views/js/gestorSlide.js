@@ -19,7 +19,7 @@ $('#columnasSlide').on('dragover', function(e) {
     e.preventDefault();
     e.stopPropagation();
 
-    $('#columnasSlide').css({"background":"url(views/images/pattern.jpg"});
+    $('#columnasSlide').css({"background":"url(views/images/pattern.JPG"});
 
 });
 /*====  Fin de Subir Imagen  ====*/
