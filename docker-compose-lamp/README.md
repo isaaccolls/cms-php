@@ -10,8 +10,7 @@ This is a basic LAMP stack environment built using Docker Compose. It consists f
 * phpMyAdmin
 
 ## Installation
-
-Run the `docker-compose up -d`.
-
+first `cp sample.env .env`
+And run the `docker-compose up -d`.
 
 Thanks [https://github.com/sprintcube/docker-compose-lamp.git](https://github.com/sprintcube/docker-compose-lamp.git) ✌
