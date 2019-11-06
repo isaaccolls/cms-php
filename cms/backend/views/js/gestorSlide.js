@@ -101,6 +101,10 @@ $('#columnasSlide').on('drop', function(e) {
                         }
                     );
                 }
+            },
+            error: function(error) {
+                console.log("fuck 😓");
+                console.log(error);
             }
         });
     }
