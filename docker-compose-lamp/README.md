@@ -21,6 +21,7 @@ _cms-copy_func() {
         echo "copying"
         docker cp $PWD/cms cms-webserver:/var/www/html/
         echo "setting permissions"
+        docker exec cms-webserver bash -c "chmod 777 /var/www/html/cms/backend/views/images/articulos"
         docker exec cms-webserver bash -c "chmod 777 /var/www/html/cms/backend/views/images/articulos/temp"
         docker exec cms-webserver bash -c "chmod 777 /var/www/html/cms/backend/views/images/slide"
         echo "that's all folks"
