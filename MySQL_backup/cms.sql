@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2019 a las 18:17:59
--- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.3.4
+-- Host: mysql:3306
+-- Generation Time: Nov 07, 2019 at 04:06 AM
+-- Server version: 5.7.28
+-- PHP Version: 7.2.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,36 +19,35 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `cms`
+-- Database: `cms`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `slide`
+-- Table structure for table `slide`
 --
 
 CREATE TABLE `slide` (
   `id` int(11) NOT NULL,
   `ruta` text NOT NULL,
-  `titulo` text NOT NULL,
-  `descripcion` text NOT NULL,
-  `orden` int(11) NOT NULL
+  `titulo` text DEFAULT NULL,
+  `descripcion` text DEFAULT NULL,
+  `orden` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `slide`
+-- Dumping data for table `slide`
 --
 
 INSERT INTO `slide` (`id`, `ruta`, `titulo`, `descripcion`, `orden`) VALUES
-(8, '../../views/images/slide/slide198.jpg', 'nuevo titulo5', 'desc 5', 1),
-(17, '../../views/images/slide/slide842.jpg', 'blanco y negro', 'blanco y negro test desc.', 3),
-(19, '../../views/images/slide/slide507.jpg', 'prueba red', 'redimensionada  ', 2);
+(8, '../../views/images/slide/slide01.jpg', 'nuevo titulo5', 'desc 5', 1),
+(18, '../../views/images/slide/slide03.jpg', 'test from db', 'testing...', 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -62,40 +61,40 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `usuario`, `password`, `email`, `photo`, `rol`, `intentos`) VALUES
 (1, 'admin', '1234', 'admin@correo.com', '', 0, 0);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `slide`
+-- Indexes for table `slide`
 --
 ALTER TABLE `slide`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `slide`
+-- AUTO_INCREMENT for table `slide`
 --
 ALTER TABLE `slide`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
