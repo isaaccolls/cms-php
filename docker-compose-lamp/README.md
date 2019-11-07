@@ -20,6 +20,7 @@ _cms-copy_func() {
     if [ -d "$PWD/cms" ]; then
         echo "start copy"
         docker cp $PWD/cms cms-webserver:/var/www/html/
+        docker exec cms-webserver bash -c "chmod 777 /var/www/html/cms/backend/views/images/articulos/temp"
         echo "end copy"
     else
         echo "not here buddy!"
