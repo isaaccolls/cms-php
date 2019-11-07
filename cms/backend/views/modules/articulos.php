@@ -37,6 +37,7 @@ ARTÍCULOS ADMINISTRABLE
         <?php
             $mostrarArticulo = new GestorArticulos();
             $mostrarArticulo -> mostrarArticulosController();
+            $mostrarArticulo -> borrarArticuloController();
         ?>
         <!-- <li>
             <span>

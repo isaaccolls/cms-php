@@ -29,4 +29,17 @@ class GestorArticulosModel {
         return $stmt -> fetchAll();
         $stmt -> close();
     }
+
+    // borrar articulos
+    public function borrarArticuloModel($datosModel, $tabla) {
+        $stmt = Conexion::conectar() -> prepare("DELETE FROM $tabla WHERE id = :id");
+
+        $stmt -> bindParam(":id", $datosModel, PDO::PARAM_INT);
+        if ($stmt -> execute()) {
+            return "ok";
+        } else {
+            return "errror";
+        }
+        $stmt -> close();
+    }
 }

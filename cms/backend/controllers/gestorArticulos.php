@@ -50,7 +50,7 @@ class GestorArticulos {
                     <script>
                         swal({
                             title: "¡OK!",
-                            text: "¡La imagen se subió correctamente",
+                            text: "¡El articulo se subió correctamente!",
                             type: "success",
                             confirmButtonText: "Cerrar",
                             closeOnConfirm: false
@@ -63,6 +63,7 @@ class GestorArticulos {
                     </script>
                 ';
             } else {
+                // fuck 🙃
                 echo $respuesta;
             }
         }
@@ -75,8 +76,10 @@ class GestorArticulos {
             echo '
                 <li>
                     <span>
-                        <i class="fa fa-times btn btn-danger"></i>
-                        <i class="fa fa-pencil btn btn-primary"></i>    
+                        <a href="index.php?action=articulos&idBorrar='.$item["id"].'&rutaImagen='.$item["ruta"].'">
+                            <i class="fa fa-times btn btn-danger"></i>
+                        </a>
+                        <i class="fa fa-pencil btn btn-primary"></i>
                     </span>
                     <img src="'.$item["ruta"].'" class="img-thumbnail">
                     <h1>'.$item["titulo"].'</h1>
@@ -102,6 +105,38 @@ class GestorArticulos {
                     </div>
                 </div>
             ';
+        }
+    }
+
+    // Borrar articulos
+    public function borrarArticuloController() {
+        if (isset($_GET["idBorrar"])) {
+            unlink($_GET["rutaImagen"]);
+            $datosController = $_GET["idBorrar"];
+
+            $respuesta = GestorArticulosModel::borrarArticuloModel($datosController, "articulos");
+
+            if ($respuesta = "ok") {
+                echo '
+                    <script>
+                        swal({
+                            title: "¡OK!",
+                            text: "¡El articulo se borro correctamente!",
+                            type: "success",
+                            confirmButtonText: "Cerrar",
+                            closeOnConfirm: false
+                        },
+                        function(isConfirm) {
+                            if (isConfirm) {
+                                window.location = "articulos";
+                            }
+                        });
+                    </script>
+                ';
+            } else {
+                // fuck 🙃
+                echo respuesta;
+            }
         }
     }
 }
