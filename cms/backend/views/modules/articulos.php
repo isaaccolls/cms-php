@@ -14,15 +14,18 @@ ARTÍCULOS ADMINISTRABLE
     <button id="btnAgregarArticulo" class="btn btn-info btn-lg">Agregar Artículo</button>
     <!--==== AGREGAR ARTÍCULO  ====-->
     <div id="agregarArticulo" style="display: none;">
-        <input type="text" placeholder="Título del Artículo" class="form-control" style="margin-top: 1%;">
-        <textarea name="" id="" cols="30" rows="5" placeholder="Introducción del Articulo" maxlength="170" class="form-control" style="margin-top: 1%;"></textarea>
-        <input type="file" name="imagen" class="btn btn-default" id="subirFoto" required>
-        <p>Tamaño recomendado: 800px * 400px, peso máximo 2MB</p>
-        <div id="arrastreImagenArticulo">   
-            <div id="imagenArticulo"><img src="views/images/articulos/landscape01.jpg" class="img-thumbnail"></div>
-        </div>
-        <textarea name="" id="" cols="30" rows="10" placeholder="Contenido del Articulo" class="form-control"></textarea>
-        <button id="guardarArticulo" class="btn btn-primary">Guardar Artículo</button>
+        <Form method="post" enctype="multipart/form-data">
+            <input type="text" placeholder="Título del Artículo" class="form-control" style="margin-top: 1%;">
+            <textarea name="" id="" cols="30" rows="5" placeholder="Introducción del Articulo" maxlength="170" class="form-control" style="margin-top: 1%;"></textarea>
+            <input type="file" name="imagen" class="btn btn-default" id="subirFoto" required>
+            <p>Tamaño recomendado: 800px * 400px, peso máximo 2MB</p>
+            <div id="arrastreImagenArticulo">   
+                <!-- <div id="imagenArticulo"><img src="views/images/articulos/landscape01.jpg" class="img-thumbnail"></div> -->
+            </div>
+            <textarea name="" id="" cols="30" rows="10" placeholder="Contenido del Articulo" class="form-control"></textarea>
+            <input type="submit" id="guardarArticulo" class="btn btn-primary" value="Guardar Artículo">
+        </Form>
+
     </div>
     <hr>
     <!--==== EDITAR ARTÍCULO  ====-->
