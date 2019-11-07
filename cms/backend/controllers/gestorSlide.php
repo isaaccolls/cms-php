@@ -9,22 +9,18 @@ class GestorSlide {
         // var_dump(getimagesize($datos["imagenTemporal"]));
         // list: (no es una funcion, es un constructor del lenguaje) Se utiliza para asignar una lista de variables en una sola operacion
         list($ancho, $alto) = getimagesize($datos["imagenTemporal"]);
-        // echo $ancho;
-        // echo $alto;
 
         if ($ancho < 1600 || $alto < 600) {
             echo 0;
         } else {
             $aleatorio = mt_rand(100, 999);
             $ruta = "../../views/images/slide/slide".$aleatorio.".jpg";
-            // echo $ruta;
             // imagecreatefromjpeg: crea una nueva imagen a partir de un fichero o de una URL
             $origen = imagecreatefromjpeg($datos["imagenTemporal"]);
             // imagecrop: recorta una imagen usando las coordenadas, tamaño, x, y, ancho y alto dados
             $destino = imagecrop($origen, ["x" => 0, "y" => 0, "width" => 1600, "height" => 600]);
             // imagejpeg: exporta imagen al navegador o a un fichero
             imagejpeg($destino, $ruta);
-            // echo 1;
             GestorSlideModel::subirImagenSlideModel($ruta, "slide");
 
             //
