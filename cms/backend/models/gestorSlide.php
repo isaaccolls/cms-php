@@ -82,7 +82,6 @@ class GestorSlideModel {
         } else {
             return "error";
         }
-
         $stmt -> close();
     }
 

@@ -23,7 +23,19 @@ class Ajax {
             "rutaGaleria" => $this -> rutaGaleria
         );
         $respuesta = GestorGaleria::eliminarGaleriaController($datos);
-        echo $repuestos;
+        echo $respuesta;
+    }
+
+    // actualizar orden
+    public $actualizarOrdenGaleria;
+    public $actualizarOrdenItem;
+    public function actualizarOrdenAjax() {
+        $datos = array(
+            "ordenGaleria" => $this -> actualizarOrdenGaleria,
+            "ordenItem" => $this -> actualizarOrdenItem
+        );
+        $respuesta = GestorGaleria::actualizarOrdenController($datos);
+        echo $respuesta;
     }
 }
 
@@ -41,4 +53,9 @@ if (isset($_POST["idGaleria"])) {
     $b -> eliminarGaleriaAjax();
 }
 
-
+if (isset($_POST["actualizarOrdenGaleria"])) {
+    $c = new Ajax();
+    $c -> actualizarOrdenGaleria = $_POST["actualizarOrdenGaleria"];
+    $c -> actualizarOrdenItem = $_POST["actualizarOrdenItem"];
+    $c -> actualizarOrdenAjax();
+}

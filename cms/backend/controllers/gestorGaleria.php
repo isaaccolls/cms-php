@@ -33,10 +33,10 @@ class GestorGaleria {
 
         foreach ($respuesta as $row => $item) {
             echo '
-                <li id="'.$item["id"].'"">
+                <li id="'.$item["id"].'" class="bloqueGaleria">
                     <span class="fa fa-times eliminarFoto" ruta="' . $item["ruta"] . '"></span>
                     <a rel="grupo" href="'.substr($item["ruta"], 6).'">
-                    <img src="' . substr($item["ruta"], 6) . '">
+                        <img src="' . substr($item["ruta"], 6) . '" class="handleImg">
                     </a>
                 </li>
             ';
@@ -45,10 +45,25 @@ class GestorGaleria {
 
     // eliminar item de galeria
     public function eliminarGaleriaController($datos) {
-        $repuesta = GestorGaleriaModel::eliminarGaleriaModel($datos, "galeria");
-        error_log("WTF!");
-        error_log(print_r($datos["rutaGaleria"], true));
+        $respuesta = GestorGaleriaModel::eliminarGaleriaModel($datos, "galeria");
         unlink($datos["rutaGaleria"]);
-        echo $repuesta;
+        echo $respuesta;
+    }
+
+    // actualizar orden
+    public function actualizarOrdenController($datos) {
+        GestorGaleriaModel::actualizarOrdenModel($datos, "galeria");
+        $respuesta = GestorGaleriaModel::seleccionarOrdenModel("galeria");
+
+        foreach ($respuesta as $row => $item) {
+            echo '
+                <li id="'.$item["id"].'" class="bloqueGaleria">
+                    <span class="fa fa-times eliminarFoto" ruta="' . $item["ruta"] . '"></span>
+                    <a rel="grupo" href="'.substr($item["ruta"], 6).'">
+                        <img src="' . substr($item["ruta"], 6) . '" class="handleImg">
+                    </a>
+                </li>
+            ';
+        }
     }
 }

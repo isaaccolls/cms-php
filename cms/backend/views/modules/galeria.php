@@ -19,6 +19,7 @@ GALERIA ADMINISTRABLE
             $galeria -> mostrarImagenVistaController();
         ?>
     </ul>
-    <button class="btn btn-warning pull-right" style="margin:10px 30px">Ordenar Imágenes</button>
+    <button id="ordenarGaleria" class="btn btn-warning pull-right" style="margin:10px 30px">Ordenar Imágenes</button>
+    <button id="guardarGaleria" class="btn btn-primary pull-right" style="margin:10px 30px; display: none">Guardar orden</button>
 </div>
 <!--====  Fin de GALERIA ADMINISTRABLE  ====-->

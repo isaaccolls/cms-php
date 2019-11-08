@@ -49,4 +49,30 @@ class GestorGaleriaModel {
         }
         $stmt -> close();
     }
+
+    // actualizar orden
+    public function actualizarOrdenModel($datos, $tabla) {
+        $stmt = Conexion::conectar() -> prepare("UPDATE $tabla SET orden = :orden WHERE id = :id");
+
+        $stmt -> bindParam(":orden", $datos["ordenItem"], PDO::PARAM_INT);
+        $stmt -> bindParam(":id", $datos["ordenGaleria"], PDO::PARAM_INT);
+
+        if ($stmt -> execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+        $stmt -> close();
+    }
+
+    // seleccionar orden
+    public function seleccionarOrdenModel($tabla) {
+        $stmt = Conexion::conectar() -> prepare("SELECT id, ruta FROM $tabla ORDER BY orden ASC");
+
+        $stmt -> execute();
+
+        return $stmt -> fetchAll();
+
+        $stmt -> close();
+    }
 }

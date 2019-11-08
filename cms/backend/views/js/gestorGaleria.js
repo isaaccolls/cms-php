@@ -34,7 +34,7 @@ $("#lightbox").on("drop", function(e) {
     $("#lightbox").css({"background": "white"});
 
     var archivo = e.originalEvent.dataTransfer.files;
-    console.log("archivo", archivo);
+    // console.log("archivo", archivo);
     for (var i = 0; i < archivo.length; i++) {
         imagen = archivo[i];
         imagenSize.push(imagen.size);
@@ -77,20 +77,17 @@ $("#lightbox").on("drop", function(e) {
                         $('#lightbox').css({"height":"auto"});
                         $("#lightbox").append('<li><span class="fa fa-times"></span><a rel="grupo" href="' + respuesta.slice(6) + '"><img src="' + respuesta.slice(6) + '"></a></li>');
 
-                        swal(
-                            {
-                                title: "¡OK!",
-                                text: "¡La imagen se subió correctamente",
-                                type: "success",
-                                confirmButtonText: "Cerrar",
-                                closeOnConfirm: false
-                            },
-                            function(isConfirm) {
-                                if (isConfirm) {
-                                    window.location = "galeria";
-                                }
+                        swal({
+                            title: "¡OK!",
+                            text: "¡La imagen se subió correctamente",
+                            type: "success",
+                            confirmButtonText: "Cerrar",
+                            closeOnConfirm: false
+                        }, function(isConfirm) {
+                            if (isConfirm) {
+                                window.location = "galeria";
                             }
-                        );
+                        });
                     }
                 },
                 error: function(error) {
@@ -111,8 +108,6 @@ $(".eliminarFoto").click(function() {
 
     var idGaleria = $(this).parent().attr("id");
     var rutaGaleria = $(this).attr("ruta");
-    // console.log("idGaleria", idGaleria);
-    console.log("rutaGaleria", rutaGaleria);
     $(this).parent().remove();
 
     var borrarItem = new FormData();
@@ -126,7 +121,63 @@ $(".eliminarFoto").click(function() {
         contentType: false,
         processData: false,
         success: function(respuesta) {
-            console.log("a segun borro xD", respuesta);
+            // console.log("a segun borro xD", respuesta);
         }
     });
+});
+
+// order items galeria
+var almacenarOrdenId = [];
+var ordenItem = [];
+$("#ordenarGaleria").click(function() {
+    $("#ordenarGaleria").hide();
+    $("#guardarGaleria").show();
+    $("#lightbox").css({"cursor": "move"});
+    $("#lightbox span").hide();
+    $("#lightbox").sortable({
+        revert: true,
+        connectWith: ".bloqueGaleria",
+        handle: ".handleImg",
+        stop: function(event) {
+            for (var i = 0; i < $("#lightbox li").length; i++) {
+                almacenarOrdenId[i] = event.target.children[i].id;
+                ordenItem[i] = i + 1;
+            }
+        }
+    });
+});
+
+$("#guardarGaleria").click(function() {
+    $("#ordenarGaleria").show();
+    $("#guardarGaleria").hide();
+
+    for (var i = 0; i < $("#lightbox li").length; i++) {
+        var actualizarOrden = new FormData();
+        actualizarOrden.append("actualizarOrdenGaleria", almacenarOrdenId[i]);
+        actualizarOrden.append("actualizarOrdenItem", ordenItem[i]);
+        $.ajax({
+            url: "views/ajax/gestorGaleria.php",
+            method: "POST",
+            data: actualizarOrden,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(respuesta) {
+                $("#lightbox").html(respuesta);
+
+                swal({
+                    title: "¡OK!",
+                    text: "¡El orden se ha actualizado correctamente",
+                    type: "success",
+                    confirmButtonText: "Cerrar",
+                    closeOnConfirm: false
+                }, function(isConfirm) {
+                    if (isConfirm) {
+                        window.location = "galeria";
+                    }
+                });
+
+            }
+        })
+    }
 });
