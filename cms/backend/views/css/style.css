@@ -383,7 +383,7 @@ GALERÍA
 #galeria ul{
 	margin:20px;
 	padding: 0px 10px;
-	height:auto;
+	height:100px;
 	border:2px dashed #999;
 }
 

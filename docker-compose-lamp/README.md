@@ -24,6 +24,7 @@ _cms-copy_func() {
         docker exec cms-webserver bash -c "chmod 777 /var/www/html/cms/backend/views/images/articulos"
         docker exec cms-webserver bash -c "chmod 777 /var/www/html/cms/backend/views/images/articulos/temp"
         docker exec cms-webserver bash -c "chmod 777 /var/www/html/cms/backend/views/images/slide"
+        docker exec cms-webserver bash -c "chmod 777 /var/www/html/cms/backend/views/images/galeria"
         echo "that's all folks"
     else
         echo "not here buddy!"

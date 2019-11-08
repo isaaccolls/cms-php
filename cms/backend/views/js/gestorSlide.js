@@ -49,7 +49,6 @@ $('#columnasSlide').on('drop', function(e) {
 
     // validar tipo archivo
     var imagenType = imagen.type;
-
     if (imagenType == 'image/jpeg' || imagenType == 'image/png') {
         $(".alerta").remove();
     } else {
@@ -74,7 +73,6 @@ $('#columnasSlide').on('drop', function(e) {
             },
             success: function(respuesta) {
                 // console.log('respuesta', respuesta);
-
                 $("#status").remove();
 
                 if (respuesta == 0) {
