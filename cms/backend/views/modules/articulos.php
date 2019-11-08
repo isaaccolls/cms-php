@@ -40,21 +40,9 @@ ARTÍCULOS ADMINISTRABLE
             $mostrarArticulo -> borrarArticuloController();
             $mostrarArticulo -> editarArticuloController();
         ?>
-        <!-- <li>
-            <span>
-            <i class="fa fa-times btn btn-danger"></i>
-            <i class="fa fa-pencil btn btn-primary"></i>    
-            </span>
-            <img src="views/images/articulos/landscape02.jpg" class="img-thumbnail">
-            <h1>Lorem Ipsum</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a href="#articulo1" data-toggle="modal">
-            <button class="btn btn-default">Leer Más</button>
-            </a>
-            <hr>
-        </li>
-    </ul> -->
-    <button class="btn btn-warning pull-right" style="margin:10px 30px">Ordenar Artículos</button>
+    </ul>
+    <button id="ordenarArticulos" class="btn btn-warning pull-right" style="margin:10px 30px">Ordenar Artículos</button>
+    <button id="guardarOrdenArticulos" class="btn btn-primary pull-right" style="display: none; margin:10px 30px;" >Guardar Orden</button>
 </div>
 <!--====  Fin de ARTÍCULOS ADMINISTRABLE  ====-->
 <!--=====================================

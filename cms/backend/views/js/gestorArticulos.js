@@ -134,3 +134,79 @@ $(".editarArticulo").click(function() {
         });
     })
 });
+
+/*=====================================
+Ordenar Item Articulos
+======================================*/
+var almacenarOrdenId = new Array();
+var ordenItem = new Array();
+$("#ordenarArticulos").click(function() {
+    $("#guardarOrdenArticulos").show();
+    $("#ordenarArticulos").hide();
+
+    $("#editarArticulo").css({"cursor": "move"});
+    $("#editarArticulo span i").hide();
+    $("#editarArticulo button").hide();
+    $("#editarArticulo img").hide();
+    $("#editarArticulo p").hide();
+    $("#editarArticulo hr").hide();
+    $("#editarArticulo div").remove();
+    $(".bloqueArticulo h1").css({"font-size": "14px", "position": "absolute", "padding": "10px", "top": "-15px"});
+    $(".bloqueArticulo").css({"padding": "2px"});
+    $("#editarArticulo span").html('<i class="glyphicon glyphicon-move" style="padding: 8px"></i>');
+
+    // body for chrome, html firefoz 🙃
+    $("body, html").animate({
+        scrollTop: $("body").offset().top
+    }, 1000);
+
+    $("#editarArticulo").sortable({
+        revert: true,
+        connectWith: ".bloqueArticulo",
+        handle: ".handleArticle",
+        stop: function(event) {
+            for (var i = 0; i < $("#editarArticulo li").length; i++) {
+                almacenarOrdenId[i] = event.target.children[i].id;
+                ordenItem[i] = i + 1;
+            }
+        }
+    });
+
+    $("#guardarOrdenArticulos").click(function() {
+        $("#ordenarArticulos").show();
+        $("#guardarOrdenArticulos").hide();
+            for (var i = 0; i < $("#editarArticulo li").length; i++) {
+                // console.log('almacenarOrdenId[i] ID:', almacenarOrdenId[i]);
+                // console.log("ordenItem[i] ORDEN:", ordenItem[i]);
+                var actualizarOrden = new FormData();
+                actualizarOrden.append("actualizarOrdenArticulos", almacenarOrdenId[i]);
+                actualizarOrden.append("actualizarOrdenItem", ordenItem[i]);
+
+                $.ajax({
+                    url: "views/ajax/gestorArticulos.php",
+                    method: "POST",
+                    data: actualizarOrden,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(respuesta) {
+
+                        $("#editarArticulo").html(respuesta);
+
+                        swal({
+                            title: "¡OK!",
+                            text: "¡El orden se ha actualizado correctamente!",
+                            type: "success",
+                            confirmButtonText: "Cerrar",
+                            closeOnConfirm: false
+                        },
+                        function(isConfirm) {
+                            if (isConfirm) {
+                                window.location = "articulos";
+                            }
+                        });
+                    }
+                })
+            }
+    });
+});
