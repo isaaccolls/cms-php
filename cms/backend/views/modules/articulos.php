@@ -38,6 +38,7 @@ ARTÍCULOS ADMINISTRABLE
             $mostrarArticulo = new GestorArticulos();
             $mostrarArticulo -> mostrarArticulosController();
             $mostrarArticulo -> borrarArticuloController();
+            $mostrarArticulo -> editarArticuloController();
         ?>
         <!-- <li>
             <span>
@@ -50,16 +51,6 @@ ARTÍCULOS ADMINISTRABLE
             <a href="#articulo1" data-toggle="modal">
             <button class="btn btn-default">Leer Más</button>
             </a>
-            <hr>
-        </li>
-        <li>
-            <span>
-                <button class="btn btn-primary pull-right">Guardar</button> 
-            </span>
-            <div id="editarImagen"><span class="fa fa-times"></span><img src="views/images/articulos/landscape03.jpg" class="img-thumbnail"></div>
-            <input type="text" value="Lorem Ipsum">
-            <textarea cols="30" rows="5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
-            <textarea name="" id="editarContenido" cols="30" rows="10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
             <hr>
         </li>
     </ul> -->

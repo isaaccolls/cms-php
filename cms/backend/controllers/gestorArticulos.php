@@ -2,7 +2,7 @@
 
 class GestorArticulos {
 
-    // mostrar imagen slide
+    // mostrar imagen articulo
     public function mostrarImagenController($datos) {
         list($ancho, $alto) = getimagesize($datos);
         if ($ancho < 800 || $alto < 400) {
@@ -74,16 +74,17 @@ class GestorArticulos {
         $respuesta = GestorArticulosModel::mostrarArticulosModel("articulos");
         foreach ($respuesta as $row => $item) {
             echo '
-                <li>
+                <li id="'.$item["id"].'">
                     <span>
                         <a href="index.php?action=articulos&idBorrar='.$item["id"].'&rutaImagen='.$item["ruta"].'">
                             <i class="fa fa-times btn btn-danger"></i>
                         </a>
-                        <i class="fa fa-pencil btn btn-primary"></i>
+                        <i class="fa fa-pencil btn btn-primary editarArticulo"></i>
                     </span>
                     <img src="'.$item["ruta"].'" class="img-thumbnail">
                     <h1>'.$item["titulo"].'</h1>
                     <p>'.$item["introduccion"].'</p>
+                    <input type="hidden" value="'.$item["contenido"].'" >
                     <a href="#articulo'.$item["id"].'" data-toggle="modal">
                         <button class="btn btn-default">Leer Más</button>
                     </a>
@@ -136,6 +137,66 @@ class GestorArticulos {
             } else {
                 // fuck 🙃
                 echo respuesta;
+            }
+        }
+    }
+
+    // actualizar articulos
+    public function editarArticuloController() {
+        if (isset($_POST["editarTitulo"])) {
+            $ruta = "";
+
+            if (isset($_FILES["editarImagen"]["tmp_name"])) {
+                $imagen = $_FILES["editarImagen"]["tmp_name"];
+                $aleatorio = mt_rand(100, 999);
+                $ruta = "views/images/articulos/articulo".$aleatorio.".jpg";
+                $origen = imagecreatefromjpeg($imagen);
+                $destino = imagecrop($origen, ["x" => 0, "y" => 0, "width" => 800, "height" => 400]);
+                imagejpeg($destino, $ruta);
+
+                $borrar =glob("views/images/articulos/temp/*");
+                foreach($borrar as $file) {
+                    unlink($file);
+                }
+            }
+            error_log("despues de la condicion");
+
+            if ($ruta == "") {
+                $ruta = $_POST["fotoAntigua"];
+            } else {
+                unlink($_POST["fotoAntigua"]);
+            }
+
+            $datosController = array(
+                "id" => $_POST["id"],
+                "titulo" => $_POST["editarTitulo"],
+                "introduccion" => $_POST["editarIntroduccion"],
+                "ruta" => $ruta,
+                "contenido" => $_POST["editarContenido"]
+            );
+
+            $respuesta = GestorArticulosModel::editarArticuloModel($datosController, "articulos");
+
+            if ($respuesta == "ok") {
+                echo '
+                    <script>
+                        swal({
+                            title: "¡OK!",
+                            text: "¡El articulo se actualizo correctamente!",
+                            type: "success",
+                            confirmButtonText: "Cerrar",
+                            closeOnConfirm: false
+                        },
+                        function(isConfirm) {
+                            if (isConfirm) {
+                                window.location = "articulos";
+                            }
+                        });
+                    </script>
+                ';
+            } else {
+                // fuck 🙃
+                echo $respuesta;
             }
         }
     }
