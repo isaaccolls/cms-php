@@ -27,18 +27,28 @@ class GestorGaleria {
         }
     }
 
+    // mostrar imagen en la vista
     public function mostrarImagenVistaController() {
         $respuesta = GestorGaleriaModel::mostrarImagenVistaModel("galeria");
 
         foreach ($respuesta as $row => $item) {
             echo '
-                <li>
-                    <span class="fa fa-times"></span>
+                <li id="'.$item["id"].'"">
+                    <span class="fa fa-times eliminarFoto" ruta="' . $item["ruta"] . '"></span>
                     <a rel="grupo" href="'.substr($item["ruta"], 6).'">
-                    <img src="'.substr($item["ruta"], 6).'">
+                    <img src="' . substr($item["ruta"], 6) . '">
                     </a>
                 </li>
             ';
         }
+    }
+
+    // eliminar item de galeria
+    public function eliminarGaleriaController($datos) {
+        $repuesta = GestorGaleriaModel::eliminarGaleriaModel($datos, "galeria");
+        error_log("WTF!");
+        error_log(print_r($datos["rutaGaleria"], true));
+        unlink($datos["rutaGaleria"]);
+        echo $repuesta;
     }
 }

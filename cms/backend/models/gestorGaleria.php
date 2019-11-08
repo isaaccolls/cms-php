@@ -37,4 +37,16 @@ class GestorGaleriaModel {
         return $stmt -> fetchAll();
         $stmt -> close();
     }
+
+    // eliminar item galeria
+    public function eliminarGaleriaModel($datos, $tabla) {
+        $stmt = Conexion::conectar() -> prepare("DELETE FROM $tabla WHERE id = :id");
+        $stmt -> bindParam(":id", $datos["idGaleria"], PDO::PARAM_INT);
+        if ($stmt -> execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+        $stmt -> close();
+    }
 }

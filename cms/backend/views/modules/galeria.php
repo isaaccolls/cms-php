@@ -18,54 +18,6 @@ GALERIA ADMINISTRABLE
             $galeria = new gestorGaleria();
             $galeria -> mostrarImagenVistaController();
         ?>
-        <!-- <li>
-            <span class="fa fa-times"></span>
-            <a rel="grupo" href="images/galeria/photo01.jpg">
-            <img src="views/images/galeria/photo01.jpg">
-            </a>
-        </li>
-        <li>
-            <span class="fa fa-times"></span>
-            <a rel="grupo" href="images/galeria/photo02.jpg">
-            <img src="views/images/galeria/photo02.jpg">
-            </a>        
-        </li>
-        <li>
-            <span class="fa fa-times"></span>
-            <a rel="grupo" href="images/galeria/photo03.jpg">
-            <img src="views/images/galeria/photo03.jpg">
-            </a>        
-        </li>
-        <li>
-            <span class="fa fa-times"></span>
-            <a rel="grupo" href="images/galeria/photo04.jpg">
-            <img src="views/images/galeria/photo04.jpg">
-            </a>        
-        </li>
-        <li>
-            <span class="fa fa-times"></span>
-            <a rel="grupo" href="images/galeria/photo01.jpg">
-            <img src="views/images/galeria/photo01.jpg">
-            </a>
-        </li>
-        <li>
-            <span class="fa fa-times"></span>
-            <a rel="grupo" href="images/galeria/photo02.jpg">
-            <img src="views/images/galeria/photo02.jpg">
-            </a>        
-        </li>
-        <li>
-            <span class="fa fa-times"></span>
-            <a rel="grupo" href="images/galeria/photo03.jpg">
-            <img src="views/images/galeria/photo03.jpg">
-            </a>        
-        </li>
-        <li>
-            <span class="fa fa-times"></span>
-            <a rel="grupo" href="images/galeria/photo04.jpg">
-            <img src="views/images/galeria/photo04.jpg">
-            </a>        
-        </li> -->
     </ul>
     <button class="btn btn-warning pull-right" style="margin:10px 30px">Ordenar Imágenes</button>
 </div>

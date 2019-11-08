@@ -11,7 +11,6 @@ class Ajax {
     // ------------------------
     public $nombreImagen;
     public $imagenTemporal;
-
     public function gestorSlideAjax() {
         $datos = array(
             "nombreImagen" => $this -> nombreImagen,

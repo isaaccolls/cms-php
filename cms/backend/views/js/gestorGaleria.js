@@ -11,7 +11,7 @@ $("body").on("drop", function(e) {
 
 //  area arrastre de imagenes
 if ($("#lightbox").html() == 0) {
-    $("#lightbox").css({"height": "100%"});
+    $("#lightbox").css({"height": "100px"});
 } else {
     $("#lightbox").css({"height": "auto"});
 }
@@ -100,4 +100,33 @@ $("#lightbox").on("drop", function(e) {
             });
         }
     }
+});
+
+// eliminar item galeria
+$(".eliminarFoto").click(function() {
+
+    if ($(".eliminarFoto").length == 1) {
+        $("#lightbox").css({"height": "100px"});
+    }
+
+    var idGaleria = $(this).parent().attr("id");
+    var rutaGaleria = $(this).attr("ruta");
+    // console.log("idGaleria", idGaleria);
+    console.log("rutaGaleria", rutaGaleria);
+    $(this).parent().remove();
+
+    var borrarItem = new FormData();
+    borrarItem.append("idGaleria", idGaleria);
+    borrarItem.append("rutaGaleria", rutaGaleria);
+    $.ajax({
+        url: "views/ajax/gestorGaleria.php",
+        method: "POST",
+        data: borrarItem,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(respuesta) {
+            console.log("a segun borro xD", respuesta);
+        }
+    });
 });
