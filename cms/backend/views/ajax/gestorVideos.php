@@ -25,6 +25,18 @@ class Ajax {
         $respuesta = GestorVideos::eliminarVideoController($datos);
         echo $respuesta;
     }
+
+    // actualizar orden
+    public $actualizarOrdenVideo;
+    public $actualizarOrdenItem;
+    public function actualizarOrdenAjax() {
+        $datos = array(
+            "ordenVideo" => $this -> actualizarOrdenVideo,
+            "ordenItem" => $this -> actualizarOrdenItem
+        );
+        $respuesta = GestorVideos::actualizarOrdenController($datos);
+        echo $respuesta;
+    }
 }
 
 // objetos
@@ -39,4 +51,11 @@ if (isset($_POST["idVideo"])) {
     $b -> idVideo = $_POST["idVideo"];
     $b -> rutaVideo = $_POST["rutaVideo"];
     $b -> eliminarVideoAjax();
+}
+
+if (isset($_POST["actualizarOrdenVideo"])) {
+    $c = new Ajax();
+    $c -> actualizarOrdenVideo = $_POST["actualizarOrdenVideo"];
+    $c -> actualizarOrdenItem = $_POST["actualizarOrdenItem"];
+    $c -> actualizarOrdenAjax();
 }

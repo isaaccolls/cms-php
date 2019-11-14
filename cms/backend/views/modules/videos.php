@@ -21,5 +21,6 @@ VIDEOS ADMINISTRABLE
             $video -> mostrarVideoVistaController();
         ?>
     </ul>
-    <button class="btn btn-warning " style="margin:10px 30px;">Ordenar Videos</button>
+    <button id="ordenarVideo" class="btn btn-warning " style="margin:10px 30px;">Ordenar Videos</button>
+    <button id="guardarVideo" class="btn btn-primary " style="margin:10px 30px; display: none;">Guardar orden</button>
 </div>

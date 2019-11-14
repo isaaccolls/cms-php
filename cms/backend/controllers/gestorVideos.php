@@ -22,9 +22,9 @@ class GestorVideos {
 
         foreach ($respuesta as $row => $item) {
             echo '
-                <li id="' . $item["id"] . '">
+                <li id="' . $item["id"] . '" class="bloqueVideo">
                     <span class="fa fa-times eliminarVideo" ruta="' . $item["ruta"] . '"></span>
-                    <video controls>
+                    <video controls class="handleVideo">
                         <source src="' . substr($item["ruta"], 6) . '" type="video/mp4">
                     </video>
                 </li>
@@ -37,5 +37,21 @@ class GestorVideos {
         $respuesta = GestorVideosModel::eliminarVideoModel($datos, "videos");
         unlink($datos["rutaVideo"]);
         echo $respuesta;
+    }
+
+    // actualizar orden
+    public function actualizarOrdenController($datos) {
+        GestorVideosModel::actualizarOrdenModel($datos, "videos");
+        $respuesta = GestorVideosModel::seleccionarOrdenModel("videos");
+        foreach ($respuesta as $row => $item) {
+            echo '
+                <li id="' . $item["id"] . '" class="bloqueVideo">
+                    <span class="fa fa-times eliminarVideo" ruta="' . $item["ruta"] . '"></span>
+                    <video controls class="handleVideo">
+                        <source src="' . substr($item["ruta"], 6) . '" type="video/mp4">
+                    </video>
+                </li>
+            ';
+        }
     }
 }

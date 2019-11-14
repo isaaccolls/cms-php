@@ -46,4 +46,32 @@ class GestorVideosModel {
         }
         $stmt -> close();
     }
+
+    // actualizar orden
+    public function actualizarOrdenModel($datos, $tabla) {
+        $stmt = Conexion::conectar() -> prepare("UPDATE $tabla SET orden = :orden WHERE id = :id");
+        $stmt -> bindParam(":orden", $datos["ordenItem"], PDO::PARAM_INT);
+        $stmt -> bindParam(":id", $datos["ordenVideo"], PDO::PARAM_INT);
+
+        if ($stmt -> execute()) {
+            error_log("ok =)");
+            return "ok";
+        } else {
+            error_log("fuck =C");
+            $databaseErrors = $stmt -> errorInfo();
+            $errorInfo = print_r($databaseErrors, true);
+            $errorLogMsg = "error info: $errorInfo";
+            error_log($errorLogMsg);
+            return "error";
+        }
+        $stmt -> close();
+    }
+
+    // seleccionar orden
+    public function seleccionarOrdenModel($tabla) {
+        $stmt = Conexion::conectar() -> prepare("SELECT id, ruta FROM $tabla ORDER BY orden ASC");
+        $stmt -> execute();
+        return $stmt -> fetchAll();
+        $stmt -> close();
+    }
 }
