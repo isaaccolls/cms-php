@@ -32,11 +32,11 @@
                 </a>
             </li>
         </ol>
-        <form>
-                <input type="text" class="form-control"  placeholder="Nombre">
-                <input type="email" class="form-control" placeholder="Email">
-                <textarea name="" id="" cols="30" rows="10" placeholder="Contenido del Mensaje" class="form-control"></textarea>
-                <input type="button" class="btn btn-default" value="Enviar">
+        <form method="post" onsubmit="return validarMensaje()">
+                <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Nombre" required>
+                <input id="email" name="email" type="email" class="form-control" placeholder="Email" required>
+                <textarea id="mensaje" name="mensaje" cols="30" rows="10" placeholder="Contenido del Mensaje" class="form-control" required></textarea>
+                <input type="submit" class="btn btn-default" value="Enviar">
         </form>
     </div>
 </footer>
