@@ -84,10 +84,10 @@ $(".eliminarVideo").click(function() {
         contentType: false,
         processData: false,
         success: function(respuesta) {
-            console.log(respuesta);
+            // console.log(respuesta);
         },
         error: function(error) {
-            console.log("fuck 🙃", error);
+            // console.log("fuck 🙃", error);
         }
     });
 });
