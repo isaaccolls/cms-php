@@ -429,12 +429,12 @@ VIDEOS
 	right:0;
 }
 
-#galeriaVideo{
+#galeriaVideo {
 	position: relative;
-	margin:20px;
+	margin: 20px;
 	padding: 0px 10px;
-	height:auto;
-	border:2px dashed #999;
+	height: 100px;
+	border: 2px dashed #999;
 }
 
 #galeriaVideo li video{

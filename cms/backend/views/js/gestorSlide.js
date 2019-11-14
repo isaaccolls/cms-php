@@ -61,7 +61,7 @@ $('#columnasSlide').on('drop', function(e) {
         datos.append("imagen", imagen);
 
         $.ajax({
-            url:"views/ajax/gestorSlide.php",
+            url: "views/ajax/gestorSlide.php",
             method: "POST",
             data: datos,
             cache: false,
@@ -84,20 +84,17 @@ $('#columnasSlide').on('drop', function(e) {
 
                     $('#ordenarTextSlide').append('<li><span class="fa fa-pencil" style="background:blue"></span><img src="' + respuesta["ruta"].slice(6) + '" style="float:left; margin-bottom:10px" width="80%"><h1>' + respuesta["titulo"] + '</h1><p>' + respuesta["descripcion"] + '</p></li>');
 
-                    swal(
-                        {
-                            title: "¡OK!",
-                            text: "¡La imagen se subió correctamente",
-                            type: "success",
-                            confirmButtonText: "Cerrar",
-                            closeOnConfirm: false
-                        },
-                        function(isConfirm) {
-                            if (isConfirm) {
-                                window.location = "slide";
-                            }
+                    swal({
+                        title: "¡OK!",
+                        text: "¡La imagen se subió correctamente",
+                        type: "success",
+                        confirmButtonText: "Cerrar",
+                        closeOnConfirm: false
+                    }, function(isConfirm) {
+                        if (isConfirm) {
+                            window.location = "slide";
                         }
-                    );
+                    });
                 }
             },
             error: function(error) {
