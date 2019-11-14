@@ -54,14 +54,8 @@ class GestorVideosModel {
         $stmt -> bindParam(":id", $datos["ordenVideo"], PDO::PARAM_INT);
 
         if ($stmt -> execute()) {
-            error_log("ok =)");
             return "ok";
         } else {
-            error_log("fuck =C");
-            $databaseErrors = $stmt -> errorInfo();
-            $errorInfo = print_r($databaseErrors, true);
-            $errorLogMsg = "error info: $errorInfo";
-            error_log($errorLogMsg);
             return "error";
         }
         $stmt -> close();
