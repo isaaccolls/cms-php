@@ -22,13 +22,20 @@ class GestorVideos {
 
         foreach ($respuesta as $row => $item) {
             echo '
-                <li>
-                    <span class="fa fa-times"></span>
+                <li id="' . $item["id"] . '">
+                    <span class="fa fa-times eliminarVideo" ruta="' . $item["ruta"] . '"></span>
                     <video controls>
                         <source src="' . substr($item["ruta"], 6) . '" type="video/mp4">
                     </video>
                 </li>
             ';
         }
+    }
+
+    // eliminar video
+    public function eliminarVideoController($datos) {
+        $respuesta = GestorVideosModel::eliminarVideoModel($datos, "videos");
+        unlink($datos["rutaVideo"]);
+        echo $respuesta;
     }
 }

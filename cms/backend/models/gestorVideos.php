@@ -34,4 +34,16 @@ class GestorVideosModel {
         $stmt -> close();
     }
 
+    // eliminar video
+    public function eliminarVideoModel($datos, $tabla) {
+        $stmt = Conexion::conectar() -> prepare("DELETE FROM $tabla WHERE id = :id");
+        $stmt -> bindParam(":id", $datos["idVideo"], PDO::PARAM_INT);
+
+        if ($stmt -> execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+        $stmt -> close();
+    }
 }

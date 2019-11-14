@@ -62,3 +62,32 @@ $("#subirVideo").change(function() {
         })
     }
 });
+
+// eliminar video
+$(".eliminarVideo").click(function() {
+    if ($(".eliminarVideo").length == 1) {
+        $("#galeriaVideo").css({"height": "100px"});
+    }
+    idVideo = $(this).parent().attr("id");
+    rutaVideo = $(this).attr("ruta");
+
+    $(this).parent().remove();
+
+    var borrarVideo = new FormData();
+    borrarVideo.append("idVideo", idVideo);
+    borrarVideo.append("rutaVideo", rutaVideo);
+    $.ajax({
+        url: "views/ajax/gestorVideos.php",
+        method: "POST",
+        data: borrarVideo,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(respuesta) {
+            console.log(respuesta);
+        },
+        error: function(error) {
+            console.log("fuck 🙃", error);
+        }
+    });
+});
