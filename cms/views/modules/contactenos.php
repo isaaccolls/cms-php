@@ -38,5 +38,9 @@
                 <textarea id="mensaje" name="mensaje" cols="30" rows="10" placeholder="Contenido del Mensaje" class="form-control" required></textarea>
                 <input type="submit" class="btn btn-default" value="Enviar">
         </form>
+        <?php
+            $mensajes = new MensajesController();
+            $mensajes -> registroMensajesController();
+        ?>
     </div>
 </footer>
