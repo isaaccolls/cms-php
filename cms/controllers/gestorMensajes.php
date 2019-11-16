@@ -11,12 +11,26 @@ class MensajesController {
                     "email" => $_POST["email"],
                     "mensaje" => $_POST["mensaje"]
                 );
+
+                // send email
+                // mail(to, subject, message, cabecera del correo)
+                // $correoDestino = "colls_isaac@yahoo.es";
+                // $asunto = "Testing mensaje de la web";
+                // $mensaje = "Nombre: " . $_POST["nombre"] .
+                //             "\nEmail: " . $_POST["email"] .
+                //             "\nMensaje: " . $_POST["mensaje"];
+                // $cabecera = "From: Sitio web" . "\r\n" .
+                //             "cc: " . $_POST["email"];
+
+                // $envio = mail($correo, $asunto, $mensaje, $cabecera);
+                $envio = true;
+
+                // almacenar en db el mensaje
                 $respuesta = MensajesModel::registroMensajesModel($datosController, "mensajes");
 
-                if ($respuesta == "ok") {
+                if ($envio == true && $respuesta == "ok") {
                     echo '
                         <script>
-                            console.log("asd");
                             swal({
                                 title: "¡OK!",
                                 text: "¡EL mensaje ha sido enviado correctamente",
