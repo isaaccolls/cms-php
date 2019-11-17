@@ -8,6 +8,7 @@ require_once "models/gestorGaleria.php";
 require_once "controllers/gestorGaleria.php";
 require_once "controllers/gestorVideos.php";
 require_once "controllers/gestorMensajes.php";
+require_once "controllers/gestorSuscriptores.php";
 
 require_once "controllers/template.php";
 require_once "controllers/ingreso.php";
@@ -17,6 +18,7 @@ require_once "controllers/gestorArticulos.php";
 require_once "models/gestorGaleria.php";
 require_once "models/gestorVideos.php";
 require_once "models/gestorMensajes.php";
+require_once "models/gestorSuscriptores.php";
 
 
 $template = new TemplateController();
