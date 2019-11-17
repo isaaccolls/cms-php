@@ -6,14 +6,14 @@ class MensajesController {
         $respuesta = MensajesModel::mostrarMensajesModel("mensajes");
         foreach ($respuesta as $row => $item) {
             echo '
-                <div class="well well-sm">
+                <div class="well well-sm" id="' . $item["id"] . '">
                     <a href="index.php?action=mensajes&idBorrar=' . $item["id"] . '"><span class="fa fa-times pull-right"></span></a>
                     <p>' . $item["fecha"] . '</p>
-                    <h3>De: ' . $item["nomre"] . '</h3>
+                    <h3>De: ' . $item["nombre"] . '</h3>
                     <h5>Email: ' . $item["email"] . '</h5>
                     <input type="text" class="form-control" value="' . $item["mensaje"] . '" readonly>
                     <br>
-                    <button class="btn btn-info btn-sm">Leer</button>
+                    <button class="btn btn-info btn-sm leerMensaje">Leer</button>
                 </div>
             ';
         }
