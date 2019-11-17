@@ -24,13 +24,14 @@ MENSAJES
 <div id="lecturaMensajes" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
   <div>
     <hr>
-    <button class="btn btn-success">Enviar mensaje a todos los usuarios</button>
+    <button id="enviarCorreoMasivo" class="btn btn-success">Enviar mensaje a todos los usuarios</button>
     <hr>
   </div>
   <div id="visorMensajes">
     <?php
       $responderMensajes = new MensajesController();
       $responderMensajes -> responderMensajesController();
+      $responderMensajes -> mensajesMasivosController();
     ?>
   </div>
 </div>

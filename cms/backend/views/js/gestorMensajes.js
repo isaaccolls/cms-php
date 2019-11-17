@@ -17,3 +17,8 @@ $(".leerMensaje").click(function() {
     });
 
 });
+
+// enviar correo masivo
+$("#enviarCorreoMasivo").click(function() {
+    $("#visorMensajes").html('<form method="post"><p>Para: Todos los Suscriptores</p><input type="text" placeholder="Título del Mensaje" class="form-control" name="tituloMasivo"><textarea name="mensajeMasivo" cols="30" rows="5" placeholder="Escribe tu mensaje..." class="form-control"></textarea><input type="submit" class="form-control btn btn-primary" value="Enviar"></form>');
+});

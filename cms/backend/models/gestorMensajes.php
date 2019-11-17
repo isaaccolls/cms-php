@@ -22,4 +22,12 @@ class MensajesModel {
         }
         $stmt -> close();
     }
+
+    // enviar email masivos
+    public function seleccionarEmailSuscriptores($tabla) {
+        $stmt = Conexion::conectar() -> prepare ("SELECT nombre, email FROM $tabla");
+        $stmt -> execute();
+        return $stmt -> fetchAll();
+        $stmt -> close();
+    }
 }
