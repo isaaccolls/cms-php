@@ -29,7 +29,10 @@ SUSCRIPTORES
         ?>
       </tbody>
     </table>
-    <button class="btn btn-warning pull-right" style="margin:20px;">Imprimir Suscriptores</button>
+    <a href="tcpdf/pdf/suscriptores.php" target="_blank" rel="noopener noreferrer">
+    <!-- <a href="tcpdf/pdf/pdf.php" target="_blank" rel="noopener noreferrer"> -->
+      <button class="btn btn-warning pull-right" style="margin:20px;">Imprimir Suscriptores</button>
+    </a>
   </div>
 </div>
 <!--====  Fin de SUSCRIPTORES  ====-->
