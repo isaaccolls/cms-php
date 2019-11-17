@@ -46,4 +46,59 @@ class MensajesController {
             }
         }
     }
+
+    // responder mensajes
+    public function responderMensajesController() {
+        if (isset($_POST["enviarEmail"])) {
+            $email = $_POST["enviarEmail"];
+            $nombre = $_POST["enviarNombre"];
+            $titulo = $_POST["enviarTitulo"];
+            $mensaje = $_POST["enviarMensaje"];
+
+            $para = $email . ', ';
+            $para .= "colls_isaac@hotmail.com";
+            $titulo = "Respuesta a tu mensaje";
+            $mensaje = '
+                <<!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Respuesta a su Mensaje</title>
+                </head>
+                <body>
+                    <h1>Hola ' . $nombre . '</h1>
+                    <p>Hola ' . $nombre . '</p>
+                    <br>
+                    <p><b>Isaac Colls</b> 👽</p>
+                </body>
+                </html>
+            ';
+            $cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+            $cabeceras .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
+            $cabeceras .= 'From: Recordatorio <colls_isaac@yahoo.es>' . "\r\n";
+
+            $envio = mail($para, $titulo, $mensaje, $cabeceras);
+
+            if ($envio) {
+                echo '
+                    <script>
+                        swal({
+                            title: "¡OK!",
+                            text: "¡El mensaje se ha enviado correctamente!",
+                            type: "success",
+                            confirmButtonText: "Cerrar",
+                            closeOnConfirm: false
+                        },
+                        function(isConfirm) {
+                            if (isConfirm) {
+                                window.location = "mensajes";
+                            }
+                        });
+                    </script>
+                ';
+            } else {
+                echo '<div class="alert alert-danger">No se envio el mensaje!!</div>';
+            }
+
+        }
+    }
 }
