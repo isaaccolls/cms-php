@@ -16,7 +16,10 @@ CABEZOTE
             <li  style="background: #333">
                 <a href="suscriptores" style="color: #fff">
                 <i class="fa fa-bell"></i>  
-                <span>1</span>
+                <?php
+                    $revisarSuscriptores = new suscriptoresController();
+                    $revisarSuscriptores->suscriptoresSinRevisarController();
+                ?>
                 </a>
             </li>
         </ul>

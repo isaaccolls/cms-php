@@ -52,4 +52,23 @@ class SuscriptoresController {
         $respuesta = SuscriptoresModel::mostrarSuscriptoresModel($datosController);
         return $respuesta;
     }
+
+    // sucriptores sin revisar
+    public function suscriptoresSinRevisarController() {
+        $respuesta = suscriptoresModel::suscriptoresSinRevisarModel("suscriptores");
+        $sumaRevision = 0;
+        foreach ($respuesta as $key => $value) {
+            if ($value["revision"] == 0) {
+                $sumaRevision++;
+                echo '<span>' . $sumaRevision . '</.span>';
+            }
+        }
+    }
+
+    // suscriptores revisados
+    public function suscriptoresRevisadosController($datos) {
+        $datosController = $datos;
+        $respuesta = suscriptoresModel::suscriptoresRevisadosModel($datosController, "suscriptores");
+        echo $respuesta;
+    }
 }
