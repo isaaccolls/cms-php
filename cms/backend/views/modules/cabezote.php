@@ -25,8 +25,79 @@ CABEZOTE
         </ul>
     </div>
     <div id="time" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-        <div class="text-center">Lunes, 12 de Septiembre de 2016</div>
-        <div class="text-center">12:56:00 pm</div>
+        <div class="text-center">
+            <?php
+                switch (date("l")) {
+                    case 'Monday':
+                        $dia = "Lunes";
+                        break;
+                    case 'Tuesday':
+                        $dia = "Martes";
+                        break;
+                    case 'Wednesday':
+                        $dia = "Miercoles";
+                        break;
+                    case 'Thursday':
+                        $dia = "Jueves";
+                        break;
+                    case 'Friday':
+                        $dia = "Viernes";
+                        break;
+                    case 'Saturday':
+                        $dia = "Sabado";
+                        break;
+                    case 'Sunday':
+                        $dia = "Domingo";
+                        break;
+                }
+                switch (date("F")) {
+                    case 'January':
+                        $mes = "Enero";
+                        break;
+                    case 'February':
+                        $mes = "Febrero";
+                        break;
+                    case 'March':
+                        $mes = "Marzo";
+                        break;
+                    case 'April':
+                        $mes = "Abril";
+                        break;
+                    case 'May':
+                        $mes = "Mayo";
+                        break;
+                    case 'June':
+                        $mes = "Junio";
+                        break;
+                    case 'July':
+                        $mes = "Julio";
+                        break;
+                    case 'August':
+                        $mes = "agosto";
+                        break;
+                    case 'September':
+                        $mes = "Septiembre";
+                        break;
+                    case 'October':
+                        $mes = "octubre";
+                        break;
+                    case 'November':
+                        $mes = "Noviembre";
+                        break;
+                    case 'December':
+                        $mes = "Diciembre";
+                        break;
+                }
+                echo $dia . ', ' . date("d") . " de " . $mes . " de " . date("Y");
+            ?>
+        </div>
+        <div class="text-center">
+            <?php
+                date_default_timezone_set("America/Santiago ");
+                // echo date("h") . ":" . date("i") . ":" . date("s") . " " . date("a");
+                echo '<div id="hora" hora="'. date("h") .'" minutos="'. date("i") .'" segundos="'. date("s") .'" meridiano="'. date("a") .'"></div>'
+            ?>
+        </div>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-right">
         <img src="views/images/photo.jpg" class="img-circle">
@@ -40,4 +111,30 @@ CABEZOTE
         </p>
     </div>
 </div>
-<!--====  Fin de CABEZOTE  ====
+<!-- reloj dinamico -->
+<script>
+    function reloj() {
+        hora = $("#hora").attr("hora");
+        minutos = $("#hora").attr("minutos");
+        segundos = $("#hora").attr("segundos");
+        meridiano = $("#hora").attr("meridiano");
+        setInterval(function() {
+            if (segundos == 59) {
+                segundos = "0" + 0;
+                minutos = Number(minutos) + 1;
+            } else {
+                segundos++;
+                if (segundos > 0 && segundos < 10) {
+                    segundos = "0" + segundos++;
+                }
+            }
+            if (minutos > 59) {
+                window.location.reload();
+            }
+            // console.log("segundos", segundos);
+            $("#hora").html(hora + ":" + minutos + ":" + segundos + " " + meridiano);
+        }, 1000);
+    }
+reloj();
+</script>
+<!--====  Fin de CABEZOTE  ====-->
