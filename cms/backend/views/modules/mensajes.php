@@ -17,8 +17,8 @@ MENSAJES
   </div>
   <?php
     $mostrarMensajes = new MensajesController();
-    $mostrarMensajes -> mostrarMensajesController();
-    $mostrarMensajes -> borrarMensajesController();
+    $mostrarMensajes->mostrarMensajesController();
+    $mostrarMensajes->borrarMensajesController();
   ?>
 </div>
 <div id="lecturaMensajes" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -30,9 +30,27 @@ MENSAJES
   <div id="visorMensajes">
     <?php
       $responderMensajes = new MensajesController();
-      $responderMensajes -> responderMensajesController();
-      $responderMensajes -> mensajesMasivosController();
+      $responderMensajes->responderMensajesController();
+      $responderMensajes->mensajesMasivosController();
     ?>
   </div>
 </div>
+<!-- on load mensajes -->
+<script>
+  $(window).load(function() {
+    var datos = new FormData();
+    datos.append("revisionMensajes", 1);
+    $.ajax({
+      url: "views/ajax/gestorRevision.php",
+      method: "POST",
+      data: datos,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(respuesta) {
+
+      }
+    });
+  });
+</script>
 <!--====  Fin de MENSAJES  ====-->

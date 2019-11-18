@@ -7,7 +7,10 @@ CABEZOTE
             <li  style="background: #333">
                 <a href="mensajes" style="color: #fff">
                 <i class="fa fa-envelope"></i> 
-                <span>1</span> 
+                <?php
+                    $revisarMensajes = new MensajesController();
+                    $revisarMensajes->mensajesSinRevisarController();
+                ?>
                 </a>
             </li>
             <li  style="background: #333">
@@ -34,4 +37,4 @@ CABEZOTE
         </p>
     </div>
 </div>
-<!--====  Fin de CABEZOTE  ====-->
+<!--====  Fin de CABEZOTE  ====

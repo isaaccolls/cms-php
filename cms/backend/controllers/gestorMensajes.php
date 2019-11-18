@@ -156,4 +156,23 @@ class MensajesController {
             }
         }
     }
+
+    // mensajes sin revisar
+    public function mensajesSinRevisarController() {
+        $respuesta = MensajesModel::mensajesSinRevisarModel("mensajes");
+        $sumaRevision = 0;
+        foreach ($respuesta as $key => $value) {
+            if ($value["revision"] == 0) {
+                $sumaRevision++;
+                echo '<span>' . $sumaRevision . '</.span>';
+            }
+        }
+    }
+
+    // mensajes revisados
+    public function mensajesRevisadosController($datos) {
+        $datosController = $datos;
+        $respuesta = MensajesModel::mensajesRevisadosModel($datosController, "mensajes");
+        echo $respuesta;
+    }
 }
