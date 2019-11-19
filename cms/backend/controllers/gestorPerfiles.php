@@ -49,4 +49,28 @@ class GestorPerfiles {
             }
         }
     }
+
+    // visualizar perfiles
+    public function verPerfilesController(){
+        $respuesta = GestorPerfilesModel::verPerfilesModel("usuarios");
+        $rol = "";
+        foreach ($respuesta as $key => $value) {
+            if ($value["rol"] == 0) {
+                $rol = "Administrador";
+            } else {
+                $rol = "Editor";
+            }
+            echo '
+                <tr>
+                    <td>' . $value["usuario"] . '</td>
+                    <td>' . $rol . '</td>
+                    <td>' . $value["email"] . '</td>
+                    <td>
+                        <span class="btn btn-info fa fa-pencil"></span>
+                        <span class="btn btn-danger fa fa-times"></span>
+                    </td>
+                </tr>
+            ';
+        }
+    }
 }

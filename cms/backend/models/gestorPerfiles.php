@@ -18,4 +18,12 @@ class GestorPerfilesModel {
         }
         $stmt->close();
     }
+
+    // visualizar perfiles
+    public function verPerfilesModel($tabla) {
+        $stmt = Conexion::conectar()->prepare("SELECT id, usuario, password, email, photo, rol FROM $tabla");
+        $stmt->execute();
+        return $stmt->fetchAll();
+        $stmt->close();
+    }
 }

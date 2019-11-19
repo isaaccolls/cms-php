@@ -14,16 +14,24 @@ PERFIL
     <h1>Hola <?php echo $_SESSION["usuario"];?>
     <span class="btn btn-info fa fa-pencil pull-left" style="font-size:10px; margin-right:10px"></span></h1>
     <div style="position:relative">
-    <img src="views/images/photo.jpg" class="img-circle pull-right">
+    <img src="<?php echo $_SESSION["photo"];?>" class="img-circle pull-right">
     </div>
     <hr>
-    <h4>Perfil: Administrador</h4>
-    <h4>Email: correo@correo.com</h4>
-    <h4>Contraseña: *******</ph4>
+    <h4>Perfil: 
+      <?php
+        if ($_SESSION["email"] == 0) {
+          echo "Administrador";
+        } else {
+          echo "Editor";
+        }
+      ?>
+    </h4>
+    <h4>Email: <?php echo $_SESSION["email"];?></h4>
+    <h4>Contraseña: *******</h4>
 </div>
 <div id="crearPerfil" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
   <button id="registrarPerfil" class="btn btn-default" style="margin-bottom: 20px">Registrar un nuevo usuario</button>
-  <form id="formularioPerfil" method="post" style="display: none">
+  <form id="formularioPerfil" method="post" style="display: none" enctype="multipart/form-data">
     <div class="form-group">
       <input type="text" name="nuevoUsuario" placeholder="Ingrese el nombre de Usuario hasta 10 caracteres" maxlength="10" class="form-control" required>
     </div>
@@ -62,15 +70,10 @@ PERFIL
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>John</td>
-          <td>Doe</td>
-          <td>john@example.com</td>
-          <td>
-            <span class="btn btn-info fa fa-pencil"></span>
-            <span class="btn btn-danger fa fa-times"></span>
-          </td>
-        </tr>
+        <?php
+          $verPerfiles = new GestorPerfiles();
+          $verPerfiles->verPerfilesController();
+        ?>
       </tbody>
     </table>
   </div>

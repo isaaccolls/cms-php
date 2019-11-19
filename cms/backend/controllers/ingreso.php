@@ -31,6 +31,11 @@ class Ingreso {
                         session_start();
                         $_SESSION["validar"] = true;
                         $_SESSION["usuario"] = $respuesta["usuario"];
+                        $_SESSION["id"] = $respuesta["id"];
+                        $_SESSION["password"] = $respuesta["password"];
+                        $_SESSION["email"] = $respuesta["email"];
+                        $_SESSION["photo"] = $respuesta["photo"];
+                        $_SESSION["rol"] = $respuesta["rol"];
 
                         header("location:inicio");
                     } else {
