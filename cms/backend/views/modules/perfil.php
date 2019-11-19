@@ -14,79 +14,61 @@ PERFIL
     <h1>Hola Juanu 
     <span class="btn btn-info fa fa-pencil pull-left" style="font-size:10px; margin-right:10px"></span></h1>
     <div style="position:relative">
-    <img src="images/photo.jpg" class="img-circle pull-right">
-    <span class="btn btn-info fa fa-pencil" style="font-size:10px; margin-right:10px; position:absolute; right:-20px; top:-50px"></span>
+    <img src="views/images/photo.jpg" class="img-circle pull-right">
     </div>
     <hr>
-
-    <h4>Perfil: Administrador 
-    <span class="btn btn-info fa fa-pencil pull-left" style="font-size:10px; margin-right:10px"></span></h4>
-
-    <h4>Email: correo@correo.com <span class="btn btn-info fa fa-pencil pull-left" style="font-size:10px; margin-right:10px"></span></h4>
-
-    <h4>Contraseña: ******* <span class="btn btn-info fa fa-pencil pull-left" style="font-size:10px; margin-right:10px"></span></ph4>
-
+    <h4>Perfil: Administrador</h4>
+    <h4>Email: correo@correo.com</h4>
+    <h4>Contraseña: *******</ph4>
 </div>
-
 <div id="crearPerfil" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
- 
-    
-
-    <button class="btn btn-default">Registrar un nuevo miembro</button>
-
-    <hr>
-
-    <div class="table-responsive">
-
+  <button id="registrarPerfil" class="btn btn-default" style="margin-bottom: 20px">Registrar un nuevo usuario</button>
+  <form id="formularioPerfil" method="post" style="display: none">
+    <div class="form-group">
+      <input type="text" name="nuevoUsuario" placeholder="Ingrese el nombre de Usuario hasta 10 caracteres" maxlength="10" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <input type="password" name="password" placeholder="Ingrese la contrasena hasta 10 caracteres" maxlength="10" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <input type="nuevoEmail" name="nuevoEmail" placeholder="Ingrese el correo electronico" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <select name="nuevoRol" class="form-control" required>
+        <option value="">Seleccione el rol</option>
+        <option value="0">Administrador</option>
+        <option value="1">Editor</option>
+      </select>
+    </div>
+    <div class="form-group text-center">
+      <input type="file" class="btn btn-default" id="subirFotoPerfil" style="display: inline-block; margin: 10px 0">
+      <p class="text-center" style="font-size: 12px">Tamano recomendado de la imagen: 100px * 100px, peso maximo 2MB</p>
+    </div>
+    <input type="submit" id="guardarPerfil" value="Guardar perfil" class="btn btn-primary">
+  </form>
+  <hr>
+  <div class="table-responsive">
     <table id="tablaSuscriptores" class="table table-striped display">
-    <thead>
-      <tr>
-        <th>Usuario</th>
-        <th>Perfil</th>
-        <th>Email</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-        <td><span class="btn btn-info fa fa-pencil quitarSuscriptor"></span></td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-        <td><span class="btn btn-info fa fa-pencil quitarSuscriptor"></span></td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-        <td><span class="btn btn-info fa fa-pencil quitarSuscriptor"></span></td>
-      </tr>
+      <thead>
         <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-        <td><span class="btn btn-info fa fa-pencil quitarSuscriptor"></span></td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-        <td><span class="btn btn-info fa fa-pencil quitarSuscriptor"></span></td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-        <td><span class="btn btn-info fa fa-pencil quitarSuscriptor"></span></td>
-      </tr>
-    </tbody>
-  </table>
-
+          <th>Usuario</th>
+          <th>Perfil</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John</td>
+          <td>Doe</td>
+          <td>john@example.com</td>
+          <td>
+            <span class="btn btn-info fa fa-pencil"></span>
+            <span class="btn btn-danger fa fa-times"></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 <!--====  Fin de PERFIL  ====-->
