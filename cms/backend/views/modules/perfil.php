@@ -105,6 +105,7 @@ PERFIL
         <?php
           $verPerfiles = new GestorPerfiles();
           $verPerfiles->verPerfilesController();
+          $verPerfiles->borrarPerfilController();
         ?>
       </tbody>
     </table>

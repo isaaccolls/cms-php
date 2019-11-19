@@ -43,4 +43,16 @@ class GestorPerfilesModel {
         }
         $stmt->close();
     }
+
+    // borrar perfil
+    public function borrarPerfilModel($datosModel, $tabla) {
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+        $stmt->bindParam(":id", $datosModel, PDO::PARAM_INT);
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+        $stmt->close();
+    }
 }

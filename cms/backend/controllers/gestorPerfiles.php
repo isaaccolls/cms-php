@@ -69,7 +69,9 @@ class GestorPerfiles {
                         <a href="#perfil' . $value["id"] . '" data-toggle="modal">
                             <span class="btn btn-info fa fa-pencil"></span>
                         </a>
-                        <span class="btn btn-danger fa fa-times"></span>
+                        <a href="index.php?action=perfil&idBorrar=' . $value["id"] . '&borrarImg=' . $value["photo"] . '" data-toggle="modal">
+                            <span class="btn btn-danger fa fa-times"></span>
+                        </a>
                     </td>
                 </tr>
                 <div id="perfil' . $value["id"] . '" class="modal fade">
@@ -178,6 +180,35 @@ class GestorPerfiles {
                 }
             } else {
                 echo '<div class="alert alert-danger">No se permiten caracteres especiales!(backend validation 😉)</div>';
+            }
+        }
+    }
+
+    // borrar perfil
+    public function borrarPerfilController() {
+        if (isset($_GET["idBorrar"])) {
+            $datosController = $_GET["idBorrar"];
+            unlink($_GET["borrarImg"]);
+            $respuesta = GestorPerfilesModel::borrarPerfilModel($datosController, "usuarios");
+            if ($respuesta == "ok") {
+                echo '
+                    <script>
+                        swal({
+                            title: "¡OK!",
+                            text: "¡El usuario se ha borrado correctamente!",
+                            type: "success",
+                            confirmButtonText: "Cerrar",
+                            closeOnConfirm: false
+                        },
+                        function(isConfirm) {
+                            if (isConfirm) {
+                                window.location = "perfil";
+                            }
+                        });
+                    </script>
+                ';
+            } else {
+                echo '<div class="alert alert-danger">Algo paso al borra⁉</div>';
             }
         }
     }
