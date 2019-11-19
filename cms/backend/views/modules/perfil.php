@@ -33,6 +33,7 @@ PERFIL
 <div id="formEditarPerfil" style="display: none;" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
   <form method="post" style="padding: 20px;" enctype="multipart/form-data">
     <input type="hidden" name="idPerfil" value="<?php echo $_SESSION["id"];?>">
+    <input type="hidden" name="actualizarSesion" value="ok">
     <div class="form-group">
       <input type="text" name="editarUsuario" value="<?php echo $_SESSION["usuario"];?>" maxlength="10" class="form-control" required>
     </div>
