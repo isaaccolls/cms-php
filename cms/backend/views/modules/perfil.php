@@ -11,7 +11,7 @@
 PERFIL       
 ======================================-->
 <div id="editarPerfil" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-    <h1>Hola Juanu 
+    <h1>Hola <?php echo $_SESSION["usuario"];?>
     <span class="btn btn-info fa fa-pencil pull-left" style="font-size:10px; margin-right:10px"></span></h1>
     <div style="position:relative">
     <img src="views/images/photo.jpg" class="img-circle pull-right">
@@ -28,10 +28,10 @@ PERFIL
       <input type="text" name="nuevoUsuario" placeholder="Ingrese el nombre de Usuario hasta 10 caracteres" maxlength="10" class="form-control" required>
     </div>
     <div class="form-group">
-      <input type="password" name="password" placeholder="Ingrese la contrasena hasta 10 caracteres" maxlength="10" class="form-control" required>
+      <input type="password" name="nuevoPassword" placeholder="Ingrese la contrasena hasta 10 caracteres" maxlength="10" class="form-control" required>
     </div>
     <div class="form-group">
-      <input type="nuevoEmail" name="nuevoEmail" placeholder="Ingrese el correo electronico" class="form-control" required>
+      <input type="email" name="nuevoEmail" placeholder="Ingrese el correo electronico" class="form-control" required>
     </div>
     <div class="form-group">
       <select name="nuevoRol" class="form-control" required>
@@ -46,6 +46,10 @@ PERFIL
     </div>
     <input type="submit" id="guardarPerfil" value="Guardar perfil" class="btn btn-primary">
   </form>
+  <?php
+    $crearPerfil = new GestorPerfiles();
+    $crearPerfil -> guardarPerfilController();
+  ?>
   <hr>
   <div class="table-responsive">
     <table id="tablaSuscriptores" class="table table-striped display">

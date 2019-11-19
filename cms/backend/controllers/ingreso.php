@@ -7,11 +7,12 @@ class Ingreso {
         if (isset($_POST["usuarioIngreso"])) {
             if (preg_match('/^[a-zA-Z0-9]*$/', $_POST["usuarioIngreso"]) && preg_match('/^[a-zA-Z0-9]*$/', $_POST["passwordIngreso"])) {
 
-                // $encriptar = crypt($_POST["passwordIngreso"], 'llave');
+                $encriptar = crypt($_POST["passwordIngreso"], 'llave');
 
                 $datosController = array(
                     "usuario" => $_POST["usuarioIngreso"],
-                    "password" => $_POST["passwordIngreso"]
+                    // "password" => $_POST["passwordIngreso"]
+                    "password" => $encriptar
                 );
 
                 $respuesta = IngresoModels::ingresoModel($datosController, "usuarios");
@@ -21,7 +22,8 @@ class Ingreso {
                 $maximoItentos = 2;
 
                 if ($intentos < $maximoItentos) {
-                    if ($respuesta["usuario"] == $_POST["usuarioIngreso"] && $respuesta["password"] == $_POST["passwordIngreso"]) {
+                    // if ($respuesta["usuario"] == $_POST["usuarioIngreso"] && $respuesta["password"] == $_POST["passwordIngreso"]) {
+                    if ($respuesta["usuario"] == $_POST["usuarioIngreso"] && $respuesta["password"] == $encriptar) {
                         $intentos = 0;
                         $datosController = array("usuarioActual" => $usuarioActual, "actualizarIntentos"=> $intentos);
                         $respuestaActualizarIntentos = IngresoModels::intentosModel($datosController, "usuarios");

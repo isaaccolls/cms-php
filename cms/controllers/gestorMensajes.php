@@ -54,7 +54,7 @@ class MensajesController {
                 }
             } else {
                 error_log("fuck C=");
-                echo '<div class="alert alert-danger">No se puedo enviar el mensaje, no se permiten caracteres especiales!(backend validation 😉)<div>';
+                echo '<div class="alert alert-danger">No se puedo enviar el mensaje, no se permiten caracteres especiales!(backend validation 😉)</div>';
             }
         }
     }
