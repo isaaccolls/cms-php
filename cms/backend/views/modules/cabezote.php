@@ -3,26 +3,32 @@ CABEZOTE
 ======================================-->
 <div id="cabezote" class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-        <ul>
-            <li  style="background: #333">
-                <a href="mensajes" style="color: #fff">
-                <i class="fa fa-envelope"></i> 
-                <?php
-                    $revisarMensajes = new MensajesController();
-                    $revisarMensajes->mensajesSinRevisarController();
-                ?>
-                </a>
-            </li>
-            <li  style="background: #333">
-                <a href="suscriptores" style="color: #fff">
-                <i class="fa fa-bell"></i>  
-                <?php
-                    $revisarSuscriptores = new suscriptoresController();
-                    $revisarSuscriptores->suscriptoresSinRevisarController();
-                ?>
-                </a>
-            </li>
-        </ul>
+        <?php
+            if ($_SESSION["rol"] == 0) {
+                echo '
+                    <ul>
+                        <li  style="background: #333">
+                            <a href="mensajes" style="color: #fff">
+                                <i class="fa fa-envelope"></i>
+                ';
+                $revisarMensajes = new MensajesController();
+                $revisarMensajes->mensajesSinRevisarController();
+                echo '
+                            </a>
+                        </li>
+                        <li  style="background: #333">
+                            <a href="suscriptores" style="color: #fff">
+                                <i class="fa fa-bell"></i>
+                ';
+                $revisarSuscriptores = new suscriptoresController();
+                $revisarSuscriptores->suscriptoresSinRevisarController();
+                echo '
+                            </a>
+                        </li>
+                    </ul>
+                ';
+            }
+        ?>
     </div>
     <div id="time" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
         <div class="text-center">
